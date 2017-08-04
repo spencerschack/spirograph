@@ -1,3 +1,14 @@
-<h2 id="title">Welcome to Ember</h2>
-
+<form>
+  {{#each model as |segment index|}}
+    {{input value=segment.length key-up="update"}}
+    {{input value=segment.period key-up="update"}}
+    <a href="" {{action "delete" index}}>
+      &times;
+    </a>
+  {{/each}}
+  <a href="" {{action "create"}}>
+    Add
+  </a>
+</form>
+{{graph-renderer segments=model}}
 {{outlet}}
