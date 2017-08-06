@@ -637,6 +637,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("spirograph/app")["default"].create({"name":"spirograph","version":"0.0.0+356ed0ad"});
+  require("spirograph/app")["default"].create({"name":"spirograph","version":"0.0.0+666de7fd"});
 }
 //# sourceMappingURL=spirograph.map
