@@ -4,6 +4,7 @@ import {load, dump} from '../models/segment';
 
 const SEPARATOR = ',';
 const PARAM = 's';
+const DEFAULT = '100:150,150:150.2,50:150.1,50:5';
 
 export default Route.extend({
 
@@ -12,7 +13,7 @@ export default Route.extend({
   },
 
   model(params) {
-    const dumps = params[PARAM].split(SEPARATOR);
+    const dumps = (params[PARAM] || DEFAULT).split(SEPARATOR);
     const store = get(this, 'store');
     return dumps.map(p => load(p, store));
   },
@@ -24,7 +25,7 @@ export default Route.extend({
       const segments = this.modelFor(this.routeName).addObject(segment);
       this.send('update');
     },
-    
+
     update() {
       const segments = this.modelFor(this.routeName);
       const dumps = segments.map(dump);
@@ -36,7 +37,7 @@ export default Route.extend({
       this.modelFor(this.routeName).removeAt(index);
       this.send('update');
     }
-  
+
   }
 
 });
